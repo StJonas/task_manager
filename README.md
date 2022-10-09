@@ -1,2 +1,2 @@
-# task_manager
+# Task Manager
 task manager app developed using Vue JS
