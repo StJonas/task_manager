@@ -1,19 +1,64 @@
 <template>
   <div class="container">
     <Header title="Task Manager"/>
+    <AddTask />
+    <Tasks 
+    @toggle-reminder="toggleReminder" 
+    @delete-task="deleteTask" :tasks="tasks" />
   </div>
 </template>
+// toggle reminder
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
 import Header from './components/Header.vue';
+import Tasks from './components/Tasks.vue';
+import AddTask from './components/AddTask.vue';
 
 
 export default {
   name: 'App',
   components: {
-    Header
-  }
+    Header,
+    Tasks,
+    AddTask,
+  },
+  data() {
+    return{
+      tasks: [],
+    }
+  },
+  methods: {
+    deleteTask(id){
+      this.tasks = this.tasks.filter((task) => task.id !== id)
+    },
+    toggleReminder(id){
+      this.tasks = this.tasks.map((task) =>
+      task.id === id ? {...task, reminder: !task.reminder} : task)
+    }
+  },
+  created() {
+    this.tasks = [
+      {
+        id: 1,
+        text: 'Appointment',
+        day: 'March 1st - 2:30pm',
+        reminder: true,
+      },
+      {
+        id: 2,
+        text: 'Meeting',
+        day: 'March 3rd - 2:30pm',
+        reminder: true,
+      },
+      {
+        id: 3,
+        text: 'Shopping',
+        day: 'March 6th - 2:30pm',
+        reminder: false,
+      },
+      ]
+  },
 }
 </script>
 
