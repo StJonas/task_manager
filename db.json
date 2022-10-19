@@ -16,14 +16,7 @@
       "id": "3",
       "text": "Dentist",
       "day": "March 1st - 2:30pm",
-      "reminder": true
-    },
-    {
-      "if": 7686,
-      "text": "task",
-      "day": "",
-      "reminder": false,
-      "id": "JtVx61I"
+      "reminder": false
     }
   ]
 }
